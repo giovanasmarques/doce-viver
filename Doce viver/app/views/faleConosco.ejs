@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fale Conosco - Doce Viver</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles/faleConosco.css">
+    <link rel="stylesheet" href="styles/navegation.css">
+    <link rel="stylesheet" href="styles/footer.css">
+
+  </head>
+  <body>
+    <%- include('menu-header') %>
+    
+    <h1>Fale Conosco</h1>
+
+    <div class="col-md-4">
+        <form action="<%= formAction %>" method="POST">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <label for="nameInput">Nome</label>
+                <input type="text" class="form-control" id="nameInput" name="name" placeholder="Nome" value="<%= formData.name %>">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <label for="emailInput">E-mail</label>
+                <input type="email" class="form-control" id="emailInput" name="email" placeholder="E-mail" value="<%= formData.email %>">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-phone"></i>
+                <label for="phoneInput">Número de Telefone</label>
+                <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="Número de Telefone" value="<%= formData.phone %>">
+            </div>
+            <div class="form-group">
+                <i class="fas fa-comment"></i>
+                <label for="messageInput">Mensagem</label>
+                <textarea class="form-control" id="messageInput" name="message" rows="4" placeholder="Escreva sua mensagem aqui..."><%= formData.message %></textarea>
+            </div>
+        </form>
+        <br>
+        <button class="btn btn-lg btn-block btn-primary" id="sendMessageButton" onclick="document.forms[0].submit();">Enviar</button>
+    </div>
+    
+    <footer>
+        <div class="footer-basic">
+            <div class="social">
+                <a href="<%= socialLinks.instagram %>"><i class="icon ion-social-instagram"></i></a>
+                <a href="<%= socialLinks.whatsapp %>"><i class="icon ion-social-whatsapp"></i></a>
+                <a href="<%= socialLinks.maps %>"><i class="fa fa-map-marker"></i></a>
+            </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/">Início</a></li>
+                <li class="list-inline-item"><a href="sobreNos">Sobre nós</a></li>
+                <li class="list-inline-item"><a href="cardapio">Cardápio</a></li>
+                <li class="list-inline-item"><a href="contato">Contato</a></li>
+                <li class="list-inline-item"><a href="ifsp">IFSP</a></li>
+            </ul>
+            <p class="copyright">Doce Viver © 2024</p>
+        </div>
+    </footer>
+  </body>
+</html>

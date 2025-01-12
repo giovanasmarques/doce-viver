@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastro - Doce Viver</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles/cadastro.css">
+    <link rel="stylesheet" href="styles/navegation.css">
+    <link rel="stylesheet" href="styles/footer.css">
+
+  </head>
+  <body>
+    
+    <%- include('menu-header') %>
+
+    <h1>Crie sua conta!</h1>
+
+    <div class="col-md-4">
+        <form action="/cadastroSucesso"  method="POST">
+
+            <!-- <p><b>Adicione seu comentário:</b> <input type="text" placeholder="Comentário" name="comentario" required></input></p> -->
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <label for="nameInput">Nome</label>
+                <input type="text" class="form-control" name="nome" placeholder="Nome"></input>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <label for="emailInput">E-mail</label>
+                <input type="email" class="form-control" name="email" placeholder="E-mail"></input>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <label for="senhaInput">Senha</label>
+                <input id="senhaInput" type="password" class="form-control" name="senha" placeholder="Senha" required pattern="[a-zA-Z0-9]{6,20}">
+                <button 
+                    type="button" 
+                    onclick="toggleSenha()"
+                    style="background: none; border: none; cursor: pointer;">
+                    <i id="toggleIcon" class="fas fa-eye"></i>
+                </button>
+            </div>
+            <div class="form-group">
+                <i class="fas fa-calendar-alt"></i>
+                <label for="dobInput">Data de Nascimento</label>
+                <input type="date" class="form-control" name="data_nascimento" placeholder="Data de Nascimento" required></input>
+            </div>
+            
+            <button class="btn btn-lg btn-block btn-primary" type="submit">Cadastrar</button>
+        </form>
+        <br>
+        <!-- <button class="btn btn-lg btn-block btn-primary" id="sendMessageButton" onclick="document.forms[0].submit();">Cadastrar</button> -->
+    </div>
+
+    <footer>
+        <div class="footer-basic">
+            <div class="social">
+                <a href=""><i class="icon ion-social-instagram"></i></a>
+                <a href=""><i class="icon ion-social-whatsapp"></i></a>
+                <a href=""><i class="fa fa-map-marker"></i></a>
+            </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/">Início</a></li>
+                <li class="list-inline-item"><a href="sobreNos">Sobre nós</a></li>
+                <li class="list-inline-item"><a href="cardapio">Cardápio</a></li>
+                <li class="list-inline-item"><a href="contato">Contato</a></li>
+                <li class="list-inline-item"><a href="ifsp">IFSP</a></li>
+            </ul>
+            <p class="copyright">Doce Viver © 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSenha() {
+            const senhaInput = document.getElementById('senhaInput');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            if (senhaInput.type === 'password') {
+                senhaInput.type = 'text'; // Mostra a senha
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash'); // Muda o ícone
+            } else {
+                senhaInput.type = 'password'; // Oculta a senha
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye'); // Volta o ícone
+            }
+        }
+    </script>
+  </body>
+</html>
