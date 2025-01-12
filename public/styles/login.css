@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background:#f0c6b0;
+    padding:75px;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+    align-items: center;
+  }
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-group label {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #F39562;
+    outline: none;
+}
+
+.form-group i {
+    margin-right: 10px;
+}
+
+.form-group input{
+    border: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+#sendMessageButton{
+    border: 0px;
+    font-family: 'Oswald', sans-serif;
+}

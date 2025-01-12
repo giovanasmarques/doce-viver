@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Doce Viver</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles/navegation.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/cardapio.css">
+    <link rel="stylesheet" href="styles/pedido.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+<%- include('menu-header') %>
+
+
+
+
+    <h1>Adicionar item ao Cardápio</h1>
+
+    <!-- Formulário para adicionar item -->
+    <form action="/editarCardapio/adicionar" method="POST" class="form-control">
+        <div class="form-group">
+            <select class='form-control' name="categoria">
+                <option value="Doces">Doces</option>
+                <option value="Salgados">Salgados</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Vegana">Vegana</option>
+            </select>
+            <!-- <input class='form-control' type="text" name="categoria" placeholder="Categoria do item" required /> -->
+            <input class='form-control' type="text" name="nome" placeholder="Nome do item" required />
+            <input class='form-control' type="text" name="detalhes" placeholder="Detalhes do item" required />
+            <input class='form-control' type="number" name="preco" step="0.01" placeholder="Preço" required />
+            <br><br>
+            <button class='btn' type="submit">Adicionar item</button>
+        </div>
+
+        <h1>Editar Cardápio</h1>
+    </form>
+
+    <div class="categoria-item">
+        <table id="table-salgados">
+        
+            <thead>
+                <tr class="cabecalho">
+                    <th>Categoria</th>
+                    <th>Nome</th>
+                    <th>Detalhes</th>
+                    <th>Preço</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% menu.forEach(item => { %>
+                    <tr class="item form-group">
+                        <!-- Formulário de edição de evento -->
+                        <form action="/editarCardapio/<%= item.id %>" method="POST">
+                            <td>
+                                <select class='form-control categoria' name="categoria">
+                                    <option value="Doces" <% if (item.categoria === "Doces") { %> selected <% } %>>Doces</option>
+                                    <option value="Salgados" <% if (item.categoria === "Salgados") { %> selected <% } %>>Salgados</option>
+                                    <option value="Bebidas" <% if (item.categoria === "Bebidas") { %> selected <% } %>>Bebidas</option>
+                                    <option value="Vegana" <% if (item.categoria === "Vegana") { %> selected <% } %>>Vegana</option>
+                                </select>
+                            </td>
+                            <!-- <td><input class="form-control" type="text" name="categoria" placeholder="Categoria do item" required value="<%= item.categoria %>" /></td> -->
+                            <td><input class="form-control" type="text" name="nome" placeholder="Nome do item" required value="<%= item.nome_item %>" /></td>
+                            <td><input class="form-control" type="text" name="detalhes" placeholder="Detalhes do item" required value="<%= item.detalhes %>" /></td>
+                            <td><input class="form-control" type="number" name="preco" step="0.01" placeholder="Preço" required value="<%= item.preco %>" /></td>
+                            <input type="hidden" name="id" required value="<%= item.id %>" />
+                            <td>
+                                <button type="submit" class="btn">Editar</button>
+                            </td>
+                        </form>
+                        <td>
+                            <!-- Formulário separado para exclusão -->
+                            <form action="/excluirCardapio/<%= item.id %>" method="POST">
+                                <button type="submit" class="btn">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+            
+
+        </table>
+    </div>
+
+    <footer>
+        <div class="footer-basic">
+            <div class="social">
+                <a href="https://www.instagram.com/doce_viver_sh/?igsh=d21oNHhyb253dmZv"><i class="icon ion-social-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=seu-numero-de-telefone"><i class="icon ion-social-whatsapp"></i></a>
+                <a href="https://maps.app.goo.gl/xmEBu6z6M5VTdjGd9"><i class="fa fa-map-marker"></i></a>
+            </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/">Início</a></li>
+                <li class="list-inline-item"><a href="sobreNos">Sobre nós</a></li>
+                <li class="list-inline-item"><a href="cardapio">Cardápio</a></li>
+                <li class="list-inline-item"><a href="galeria">Galeria</a></li>
+                <li class="list-inline-item"><a href="ifsp">IFSP</a></li>
+                <li class="list-inline-item"><a href="fazerPedido">Faça seu pedido</a></li>
+            </ul>
+            <p class="copyright">Doce Viver © 2024</p>
+        </div>
+    </footer>
+
+
+  
+
+</body>
+</html>

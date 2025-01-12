@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Doce Viver</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles/navegation.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/cardapio.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+<%- include('menu-header') %>
+
+<h1>Cardápio</h1>
+
+<div>
+    <label>Filtrar por categoria:</label>
+    <select id="categoriaFiltro" onchange="aplicarFiltros()">
+        <option value="todos">Todos</option>
+        <option value="Salgados">Salgados</option>
+        <option value="Doces">Doces</option>
+        <option value="Bebidas">Bebidas</option>
+        <option value="Vegana">Vegana</option>
+        <!-- ...outras opções -->
+    </select>
+
+    <label>Ordenar por preço:</label>
+        <select id="precoFiltro" onchange="aplicarFiltros()">
+            <option value="crescente">Crescente</option>
+            <option value="decrescente">Decrescente</option>
+        </select>
+    </label>
+</div>
+
+<div id="salgados" class="categoria-item">
+    <h2>Salgados</h2>
+    <table id="table-salgados">
+    
+        <thead>
+            <tr class="cabecalho">
+                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Detalhes</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% menu.forEach(item => { %>
+                <%if (item.categoria == "Salgados"){ %>
+                
+                <tr class="item">
+                    <td data-categoria="<% item.categoria %>"><%= item.categoria %></td>
+                    <td data-nome="<% item.nome_item %>"><%= item.nome_item %></td>
+                    <td data-detalhes="<% item.detalhes %>"><%= item.detalhes %></td>
+                    <td name=<%= item.preco %>><%= item.preco %></td>
+                </tr>
+
+                <% } %>
+            <% }) %>
+        </tbody>
+
+    </table>
+</div>
+<div id="doces" class="categoria-item">
+    <h2>Doces</h2>
+    <table id="table-doces">
+
+        <thead>
+            <tr class="cabecalho">
+                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Detalhes</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% menu.forEach(item => { %>
+                <%if (item.categoria == "Doces"){ %>
+                
+                <tr class="item">
+                    <td data-categoria="<% item.categoria %>"><%= item.categoria %></td>
+                    <td data-nome="<% item.nome_item %>"><%= item.nome_item %></td>
+                    <td data-detalhes="<% item.detalhes %>"><%= item.detalhes %></td>
+                    <td name=<%= item.preco %>><%= item.preco %></td>
+                </tr>
+
+                <% } %>
+            <% }) %>
+        </tbody>
+
+    </table>
+</div>
+<div id="bebidas" class="categoria-item">
+    <h2>Bebidas</h2>
+    <table id="table-bebidas">
+
+        <thead>
+            <tr class="cabecalho">
+                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Detalhes</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% menu.forEach(item => { %>
+                <%if (item.categoria == "Bebidas"){ %>
+                
+                <tr class="item">
+                    <td data-categoria="<% item.categoria %>"><%= item.categoria %></td>
+                    <td data-nome="<% item.nome_item %>"><%= item.nome_item %></td>
+                    <td data-detalhes="<% item.detalhes %>"><%= item.detalhes %></td>
+                    <td name=<%= item.preco %>><%= item.preco %></td>
+                </tr>
+
+                <% } %>
+            <% }) %>
+        </tbody>
+
+    </table>
+</div>
+<div id="vegana" class="categoria-item">
+    <h2>Veganas</h2>
+    <table id="table-veganos">
+    
+        <thead>
+            <tr class="cabecalho">
+                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Detalhes</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% menu.forEach(item => { %>
+                <%if (item.categoria == "Vegana"){ %>
+                
+                <tr class="item">
+                    <td data-categoria="<% item.categoria %>"><%= item.categoria %></td>
+                    <td data-nome="<% item.nome_item %>"><%= item.nome_item %></td>
+                    <td data-detalhes="<% item.detalhes %>"><%= item.detalhes %></td>
+                    <td name=<%= item.preco %>><%= item.preco %></td>
+                </tr>
+
+                <% } %>
+            <% }) %>
+        </tbody>
+
+    </table>
+</div>
+
+<br><br>
+<div class="container">
+    <a class="btn" href="fazerPedido">Faça seu pedido</a>
+</div>
+<br><br>
+
+<footer>
+    <div class="footer-basic">
+        <div class="social">
+            <a href="https://www.instagram.com/doce_viver_sh/?igsh=d21oNHhyb253dmZv"><i class="icon ion-social-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=seu-numero-de-telefone"><i class="icon ion-social-whatsapp"></i></a>
+            <a href="https://maps.app.goo.gl/xmEBu6z6M5VTdjGd9"><i class="fa fa-map-marker"></i></a>
+        </div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="/">Início</a></li>
+            <li class="list-inline-item"><a href="sobreNos">Sobre nós</a></li>
+            <li class="list-inline-item"><a href="cardapio">Cardápio</a></li>
+            <li class="list-inline-item"><a href="galeria">Galeria</a></li>
+            <li class="list-inline-item"><a href="ifsp">IFSP</a></li>
+            <li class="list-inline-item"><a href="fazerPedido">Faça seu pedido</a></li>
+        </ul>
+        <p class="copyright">Doce Viver © 2024</p>
+    </div>
+</footer>
+
+
+
+<script>
+    const items = Array.from(document.querySelectorAll('.item'));
+    const categoria_items = Array.from(document.querySelectorAll('.categoria-item'));
+
+    function aplicarFiltros() {
+        const categoriaFiltro = document.getElementById('categoriaFiltro').value;
+        const precoFiltro = document.getElementById('precoFiltro').value;
+
+        // Filtra as categorias
+        categoria_items.forEach(item => {
+            const categoria = item.querySelector('h2').innerText;
+            console.log(categoria);
+            if (categoriaFiltro === 'todos' || categoria.includes(categoriaFiltro)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        // Seleciona a tabela correta com base na categoria
+        const tabelaCategoria = document.querySelector(`#table-${categoriaFiltro.toLowerCase()}`);
+        if (!tabelaCategoria) return; // Caso não haja tabela correspondente
+
+        const linhas = Array.from(tabelaCategoria.querySelectorAll('.item'));
+
+        // Ordena as linhas pelo preço conforme o filtro selecionado
+        linhas.sort((a, b) => {
+            const precoA = parseFloat(a.querySelector('td[name]').getAttribute('name'));
+            const precoB = parseFloat(b.querySelector('td[name]').getAttribute('name'));
+
+            return precoFiltro === 'crescente' ? precoA - precoB : precoB - precoA;
+        });
+
+        // Remove as linhas da tabela e insere na nova ordem
+        const tbody = tabelaCategoria.querySelector('tbody');
+        tbody.innerHTML = ''; // Limpa o tbody atual
+        linhas.forEach(linha => tbody.appendChild(linha));
+    }
+</script>
+
+<!-- <script src="scripts/cardapio.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - Doce Viver</title>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles/cadastro.css">
+    <link rel="stylesheet" href="styles/navegation.css">
+    <link rel="stylesheet" href="styles/footer.css">
+
+  </head>
+  <body>
+    
+    <%- include('menu-header') %>
+
+    <h3><%= mensagem %></h3>
+
+    <div class="col-md-4">
+        <a class="btn" href="/login">Fazer login</a>
+    </div>
+    
+    <footer>
+        <div class="footer-basic">
+            <div class="social">
+                <a href=""><i class="icon ion-social-instagram"></i></a>
+                <a href=""><i class="icon ion-social-whatsapp"></i></a>
+                <a href=""><i class="fa fa-map-marker"></i></a>
+            </div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="/">Início</a></li>
+                <li class="list-inline-item"><a href="sobreNos">Sobre nós</a></li>
+                <li class="list-inline-item"><a href="cardapio">Cardápio</a></li>
+                <li class="list-inline-item"><a href="contato">Contato</a></li>
+                <li class="list-inline-item"><a href="ifsp">IFSP</a></li>
+            </ul>
+            <p class="copyright">Doce Viver © 2024</p>
+        </div>
+    </footer>
+  </body>
+</html>
