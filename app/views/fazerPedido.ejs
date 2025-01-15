@@ -244,11 +244,15 @@
 </div>
 <br><br>
 
-<div class="modal <% if (status_pedido === 'Sucesso') {%> show<% } %>">
+<div class="modal <% if (status_pedido === 'Sucesso' | status_pedido === 'Falha') {%> show<% } %>">
     <div class="modal-content">
       <button class="close" onclick="document.querySelector('.modal').classList.remove('show')">&times;</button>
-      <h2>Comanda fechada com sucesso!</h2>
-      <p>Clique em gerar comprovante ou fazer download para visualizar os itens do seu pedido!</p>
+        <% if (status_pedido === 'Sucesso') {%>
+            <h2>Comanda fechada com sucesso!</h2>
+            <p>Clique em gerar comprovante ou fazer download para visualizar os itens do seu pedido!</p>
+        <%} if (status_pedido === 'Falha') {%>
+            <h2>Falha ao fechar comanda!</h2>
+        <%}%>
       <button class='btn' onclick="document.querySelector('.modal').classList.remove('show')">Fechar</button>
     </div>
 </div>

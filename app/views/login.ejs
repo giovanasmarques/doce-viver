@@ -36,9 +36,13 @@
         <br>
     </div>
 
-    <!-- <div class="col-md-4">
-        <a href="/admin">Entrar como administrador</a>
-    </div> -->
+    <div class="modal <% if (status === 1) {%> show<% } %>">
+        <div class="modal-content">
+          <button class="close" onclick="document.querySelector('.modal').classList.remove('show')">&times;</button>
+            <h2><%= msg %></h2>
+          <button class='btn' onclick="document.querySelector('.modal').classList.remove('show')">Fechar</button>
+        </div>
+    </div>
 
     <h3>Não possui uma conta?</h3>
 
