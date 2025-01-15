@@ -1,21 +1,21 @@
 module.exports = {    
-    consultarCardapio: (dbConnection, callback) => {
+    consultarCardapio: (dbConn, callback) => {
         const sql = 'SELECT * FROM cardapio';
-        dbConnection.query(sql, callback);
+        dbConn.query(sql, callback);
     },
 
-    adicionarItem: (dbConnection, categoria, nome, detalhes, preco, callback) => {
-        const sql = 'INSERT INTO cardapio (categoria, nome_item, detalhes, preco) VALUES (?, ?, ?, ?)';
-        dbConnection.query(sql, [categoria, nome, detalhes, preco], callback);
+    adicionarItem: (dbConn, categoria, nome, detalhes, preco, callback) => {
+        const sql = 'INSERT INTO cardapio (categoria, nome_item, detalhes, preco) VALUES ($1, $2, $3, $4)';
+        dbConn.query(sql, [categoria, nome, detalhes, preco], callback);
     },
 
-    editarItem: (dbConnection, categoria, nome, detalhes, preco, id, callback) => {
-        const sql = 'UPDATE cardapio SET categoria = ?, nome_item = ?, detalhes = ?, preco = ? WHERE id = ?';
-        dbConnection.query(sql, [categoria, nome, detalhes, preco, id], callback);
+    editarItem: (dbConn, categoria, nome, detalhes, preco, id, callback) => {
+        const sql = 'UPDATE cardapio SET categoria = $1, nome_item = $2, detalhes = $3, preco = $4 WHERE id = $5';
+        dbConn.query(sql, [categoria, nome, detalhes, preco, id], callback);
     },
 
-    excluirItem: (dbConnection, id, callback) => {
-        const sql = 'DELETE FROM cardapio WHERE id = ?';
-        dbConnection.query(sql, [id], callback);
+    excluirItem: (dbConn, id, callback) => {
+        const sql = 'DELETE FROM cardapio WHERE id = $1';
+        dbConn.query(sql, [id], callback);
     }
 }

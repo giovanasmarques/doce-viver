@@ -1,11 +1,11 @@
 // models/faleConosco.js
 module.exports = {
     // Função para inserir a mensagem no banco de dados
-    adicionarMensagem: (dbConnection, dados, callback) => {
+    adicionarMensagem: (dbConn, dados, callback) => {
         const { name, email, phone, message } = dados;
-        const sql = 'INSERT INTO fale_conosco (nome, email, telefone, mensagem) VALUES (?, ?, ?, ?)';
+        const sql = 'INSERT INTO fale_conosco (nome, email, telefone, mensagem) VALUES ($1, $2, $3, $4)';
 
         // Executa a query de inserção
-        dbConnection.query(sql, [name, email, phone, message], callback);
+        dbConn.query(sql, [name, email, phone, message], callback);
     }
 };

@@ -1,6 +1,7 @@
 module.exports = {    
-    consultarCardapio: (dbConnection, callback) => {
+    consultarCardapio: (dbConn, callback) => {
         const sql = 'SELECT * FROM cardapio';
-        dbConnection.query(sql, callback);
+        dbConn.query(sql, callback);
     }
 }
+
