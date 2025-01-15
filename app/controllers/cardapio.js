@@ -1,13 +1,15 @@
-const dbConnection = require('../../config/dbConnection');
+const dbConn = require('../../config/dbConnection'); // Importa o Pool já configurado
 const { consultarCardapio } = require('../models/cardapio');
 
 module.exports.cardapio = (app, req, res) => {
-  //aqui vamos fazer a chamada para o model do banco de dados.
-  dbConn = dbConnection();
+  // Faz a chamada para o model do banco de dados
+  consultarCardapio(dbConn, (error, cardapio) => {
+    if (error) {
+      console.error('Erro ao consultar o cardápio:', error);
+      return res.status(500).send('Erro no servidor ao consultar o cardápio');
+    }
 
-  consultarCardapio(dbConn, (error, cardapio) =>{
-    console.log('erro', error);
-    console.log("Resultado", cardapio);
-    res.render('cardapio.ejs', {menu: cardapio});
-  })
+    console.log('Resultado:', cardapio.rows);
+    res.render('cardapio.ejs', { menu: cardapio.rows });
+  });
 };

@@ -1,15 +1,14 @@
-const dbConnection = require('../../config/dbConnection');
+const dbConn = require('../../config/dbConnection');
 const { consultarCardapio, adicionarItem, editarItem, excluirItem } = require('../models/editarCardapio');
 
 module.exports.editarCardapio = (req, res) => {
     //aqui vamos fazer a chamada para o model do banco de dados.
     console.log('[Controller Editar Cardapio]');
-    dbConn = dbConnection();
   
     consultarCardapio(dbConn, (error, cardapio) =>{
       console.log('erro', error);
       console.log("Resultado", cardapio);
-      res.render('editarCardapio.ejs', {menu: cardapio});
+      res.render('editarCardapio.ejs', {menu: cardapio.rows});
     })
 };
 
@@ -20,8 +19,6 @@ module.exports.adicionarItem = (req, res) => {
     const preco     = req.body.preco;
     console.log('[Controller Adicionar Item]');
     
-    // Estabelecendo a conexão com o banco
-    dbConn = dbConnection();
     // Chamada ao model para cadastrar o item
     adicionarItem(dbConn, categoria, nome, detalhes, preco, (error, result) => {
       if (error) {
@@ -43,8 +40,6 @@ module.exports.editarItem = (req, res) => {
   const preco = req.body.preco;
   console.log('[Controller Editar Pedido]');
 
-  // Estabelecendo a conexão com o banco
-  dbConn = dbConnection();
   // Chamada ao model para cadastrar o usuário
   editarItem(dbConn, categoria, nome, detalhes, preco, id, (error, result) => {
     if (error) {
@@ -65,8 +60,6 @@ module.exports.excluirItem = async (req, res) => {
   console.log('[Controller Excluir Pedido]');
   console.log(id);
 
-  // Estabelecendo a conexão com o banco
-  dbConn = dbConnection();
   // Chamada ao model para cadastrar o usuário
   excluirItem(dbConn, id, (error, result) => {
 

@@ -1,5 +1,5 @@
 // controllers/faleConosco.js
-const dbConnection = require('../../config/dbConnection');
+const dbConn = require('../../config/dbConnection');
 const { adicionarMensagem } = require('../models/faleConosco');
 
 module.exports = {
@@ -34,8 +34,7 @@ module.exports = {
       return res.status(400).send('Campos obrigatórios não preenchidos!');
     }
 
-    // Conexão com o banco de dados
-    const dbConn = dbConnection();
+    
     adicionarMensagem(dbConn, { name, email, phone, message }, (err, result) => {
       if (err) {
         console.error('Erro ao salvar mensagem: ', err);

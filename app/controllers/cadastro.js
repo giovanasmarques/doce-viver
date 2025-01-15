@@ -1,4 +1,4 @@
-const dbConnection = require('../../config/dbConnection');
+const dbConn = require('../../config/dbConnection');
 const { salvarUsuario } = require('../models/cadastro');
 let crypto = require('crypto');
 
@@ -16,8 +16,6 @@ module.exports.salvarUsuario = (req, res) => {
   const senha = crypto.createHash('md5').update(req.body.senha).digest('hex');
   const data_nascimento = req.body.data_nascimento;
   
-  // Estabelecendo a conexão com o banco
-  dbConn = dbConnection();
   // Chamada ao model para cadastrar o usuário
   salvarUsuario(dbConn, nome, email, senha, data_nascimento, (error, result) => {
     if (error) {
