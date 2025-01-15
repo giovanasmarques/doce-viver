@@ -1,20 +1,19 @@
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 
-const host = 'localhost';
-const database = 'doceviver2';
-const user = 'root';
-const password = '67670104ambe@';
-const port = 3306;
+// Configuração da conexão
+const dbConn = new Pool({
+  user: 'doceviver_hpfm_user',
+  host: 'dpg-cu3ostpu0jms73dn4nmg-a.oregon-postgres.render.com',
+  database: 'doceviver_hpfm',
+  password: 'Cxg35dCTAQqBHeY925teNfVk3ZXHa4Ru',
+  port: 5432,
+  ssl: {
+    rejectUnauthorized: false, // Para desenvolvimento; configure adequadamente para produção
+  },
+});
 
-//Aqui está sendo exportada uma função que precisa ser executada por quem 
-// a chama para que a conexão seja feita.
+dbConn.connect()
+  .then(() => console.log('Conectado ao PostgreSQL com sucesso!'))
+  .catch(err => console.error('Erro ao conectar ao PostgreSQL:', err));
 
-module.exports = () => {
-  return dbConn = mysql.createConnection({
-      host: host,
-      user: user,
-      password: password, 
-      database: database,
-      port: port
-    });
-}
+module.exports = dbConn;
